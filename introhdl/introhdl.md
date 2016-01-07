@@ -1,4 +1,4 @@
-# Um introdução a descrição de Hardware
+# Uma introdução a descrição de Hardware
 
 Quando Gordon Moore fez a sua previsão que culminou em sua famosa
 [lei](https://pt.wikipedia.org/wiki/Lei_de_Moore), ele
@@ -18,9 +18,9 @@ eletrônicos, e mais comumente, a lógica digital.
 ```
 
 O Thiago Lima tem seguido com uma série de posts sobre a linguagem Verilog e
-neste post vou escrever sobre as partes complementares ao que ele está
-escrevendo. Vamos discutir o projeto de sistemas usando LDH de uma perspectiva
-mais alto nível e integrando o conhecimento produzido gerando alguns projetos.
+tentarei complementar o que ele está escrevendo. Vamos discutir o projeto de
+sistemas usando LDH de uma perspectiva mais alto nível e integrando o
+conhecimento produzido gerando alguns projetos.
 
 ## Pensando em hardware
 
@@ -51,16 +51,17 @@ Com isso devemos ter cuidado em não escrever em mais de um momento.
 
 # É HARDWARE!
 
-A despeito de sua forma similar LDH como o próprio nome diz descrevem hardware.
-Ao escrever o código precisamos ter em mente qual será o hardware gerado por
-aquela descrição. Ainda que o façamos em mais alto nível.
+A despeito de suas similaridades linguagens de descrição de hardware, como o
+próprio nome diz, descrevem hardware. Ao escrever o código precisamos ter em
+mente qual será o hardware gerado por aquela descrição. Ainda que o façamos em
+mais alto nível.
 
 # Eventos
 
 Já estabelecemos que os blocos acontecem em paralelo, mas como podemos entender
 a operação do circuito? Simples. As linguagens de decrição de hardware descrevem
 o circuito com a ideia de eventos. Os blocos são executados a partir de
-gatilhos. Vamos exemplificar para facilitar a compreensão com exemplos novamente
+gatilhos. Vamos exemplificar para facilitar a compreensão com exemplos, novamente
 em VHDL.
 
 
@@ -70,5 +71,20 @@ saida1 <=
 
 saida2 <= when
 ```
+
+Observamos na primeira linha a presença da variável entrada, aos iniciados em
+vhdl é um signal, a cada "ciclo de execução" o valor de entrada será avaliado e
+saida1 será alterada. Do mesmo modo saida2 sofre alterações conforme xxxxx é
+modificado.
+
+Ao falar em ciclos de execução é preciso destacar que a analogia é somente no
+intuito de facilitar a compreensão por parte do leitor. No processo de teste e
+verificação o simulador utiliza passos de tempo para realizar a simulação. Há
+outro tipo de simulador mas vamos nos ater a esse.
+
+Quando o projeto é levado ao dispositivo, em nossa discussão um FPGA, ocorre o
+que chamamos de síntese. A descrição de hardware é convertida em circuito
+propriamente ocupando parte dosdispositivos digitais que se encontram dentro do
+FPGA. No exemplo acima temos um multiplexador.
 
 
